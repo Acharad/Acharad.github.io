@@ -1,7 +1,942 @@
-<!DOCTYPE html>
-<html>
+.contact-info-compact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-info-compact .contact-item {
+                font-size: 0.85rem;
+                padding: 0.8rem 1.2rem;
+            }<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDev Portfolio - Ahmet İmran Kavraş</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #ff8c00;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: starMove 15s linear infinite;
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 10px #ff8c00;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 5px #fff;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        @keyframes starMove {
+            0% {
+                transform: translateX(-50px) translateY(100vh);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-200px) translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(255,140,0,0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .contact-info-compact {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info-compact .contact-item {
+            background: rgba(255,140,0,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255,140,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info-compact .contact-item:hover {
+            background: rgba(255,140,0,0.2);
+            border-color: #ff8c00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,140,0,0.3);
+        }
+
+        .contact-info-compact .contact-item i {
+            font-size: 1.2rem;
+            color: #ff8c00;
+            text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        }
+
+        .contact-info-compact .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-info-compact .contact-item:hover a {
+            color: #ff8c00;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff8c00;
+            font-weight: bold;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff8c00, #ff4500, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(255,140,0,0.5);
+        }
+
+        @keyframes textGlow {
+            0% { 
+                filter: brightness(1);
+                text-shadow: 0 0 20px rgba(255,140,0,0.5);
+            }
+            100% { 
+                filter: brightness(1.3);
+                text-shadow: 0 0 40px rgba(255,140,0,0.8);
+            }
+        }
+
+        .hero-summary {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: left;
+            background: rgba(255,140,0,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,140,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,140,0,0.3);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ff8c00;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,140,0,0.5);
+            background: linear-gradient(45deg, #ffa500, #ff6a00);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+            color: #ff8c00;
+        }
+
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+            background: rgba(0,0,0,0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255,140,0,0.3);
+        }
+
+        .projects-grid, .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card, .package-card {
+            background: linear-gradient(145deg, rgba(255,140,0,0.1), rgba(0,0,0,0.8));
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid rgba(255,140,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-card::before, .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,140,0,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before, .package-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover, .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,140,0,0.4);
+            border-color: #ff8c00;
+            background: linear-gradient(145deg, rgba(255,140,0,0.2), rgba(0,0,0,0.9));
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff8c00;
+            text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff8c00;
+            font-weight: bold;
+        }
+
+        .card-description {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: #ff8c00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 20px;
+            border: 2px solid #ff8c00;
+            border-radius: 25px;
+            background: transparent;
+        }
+
+        .card-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff8c00;
+            transition: width 0.3s ease;
+        }
+
+        .card-link:hover::after {
+            width: 100%;
+        }
+
+        .card-link:hover {
+            color: #000;
+            background: #ff8c00;
+            box-shadow: 0 5px 15px rgba(255,140,0,0.4);
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid rgba(255,140,0,0.3);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff8c00;
+            text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: #ff8c00;
+            border-color: #ff8c00;
+            background: rgba(255,140,0,0.1);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff8c00;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(0,0,0,0.9));
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255,140,0,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255,140,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,140,0,0.2);
+            border-color: #ff8c00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255,140,0,0.3);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #ff8c00;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255,140,0,0.5);
+        }
+
+        .contact-item h3 {
+            color: #ff8c00;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item p, .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ff8c00;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid, .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 20px;
+            }
+
+            .contact-header-item {
+                font-size: 0.9rem;
+            }
+
+            .hero-summary {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        .parallax-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,140,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,69,0,0.1) 0%, transparent 50%);
+            animation: glowMove 20s ease-in-out infinite;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(20px) translateY(-20px); }
+            50% { transform: translateX(-20px) translateY(20px); }
+            75% { transform: translateX(20px) translateY(20px); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ff8c00;
+            border-radius: 50%;
+            animation: shootingStar 3s linear infinite;
+            box-shadow: 0 0 10px #ff8c00;
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100vw) translateY(100vh);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="parallax-glow"></div>
+    <div class="stars-container"></div>
+    
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="logo">Ahmet İmran Kavraş - Oyun Geliştirici</div>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#packages">Paketler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape">
+                <i class="fas fa-gamepad" style="font-size: 60px;"></i>
+            </div>
+            <div class="shape">
+                <i class="fas fa-code" style="font-size: 40px;"></i>
+            </div>
+            <div class="shape">
+                <i class="fas fa-rocket" style="font-size: 50px;"></i>
+            </div>
+        </div>
+        
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">Ahmet İmran Kavraş</h1>
+            <div class="contact-info-compact">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:iahmetkavras@gmail.com">iahmetkavras@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/ahmet-imran-kavra%C5%9F-17907721a/" target="_blank">LinkedIn Profilim</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+905358341387">+90 535 834 13 87</a>
+                </div>
+            </div>
+            <div class="hero-summary">
+                <p>Ben Ahmet İmran Kavraş, 2001 yılında İstanbul'da doğdum. İlkokul, ortaokul, lise eğitimlerimi İstanbul'da aldım. 2019-2021 yılları arasında İstanbul Üniversitesi Cerrahpaşa'da Bilgisayar Programcılığı okudum. Şu anda ise Yıldız Teknik Üniversitesi Bilgisayar Mühendisliği programında okumaktayım.</p>
+                <p>İlkokul hayatımdan bu yana bilgisayar oyunlarına çok fazla ilgi duydum ve birçok farklı oyun oynadım. 2019'da üniversiteye başlamam ile oyun geliştirmeye hevesim arttı ve bunun için C# eğitimleri almaya başladım. O zamandan bu yana kendimi geliştirerek oyun geliştirme konusunda ilerlemeye çalışıyorum.</p>
+            </div>
+            <a href="#projects" class="cta-button">Projelerimi Keşfet</a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Projelerim</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3 class="card-title">Proje 1: Ejder Krallığı</h3>
+                    <p class="card-description">
+                        Epik fantastik RPG oyunu. Büyülü bir dünyada ejderlerle dolu maceralar, 
+                        gelişmiş karakter sistemi ve etkileyici grafikleriyle oyuncuları büyülüyor.
+                    </p>
+                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-space-shuttle"></i>
+                    </div>
+                    <h3 class="card-title">Proje 2: Uzay Savaşçısı</h3>
+                    <p class="card-description">
+                        Aksiyon dolu uzay temalı arcade oyunu. Hızlı tempolu savaşlar, 
+                        çeşitli uzay gemileri ve sonsuz galaksi keşfi sunan modern bir deneyim.
+                    </p>
+                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="card-title">Proje 3: Zeka Labirenti</h3>
+                    <p class="card-description">
+                        Zihin geliştirici puzzle oyunu. 100+ seviye, çeşitli zorluk dereceleri 
+                        ve kullanıcı dostu arayüzü ile her yaştan oyuncuya hitap ediyor.
+                    </p>
+                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Paketlerim</h2>
+            
+            <div class="packages-grid">
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="card-title">Paket 1: Unity Araç Seti</h3>
+                    <p class="card-description">
+                        Unity geliştiriciler için kapsamlı araç koleksiyonu. 
+                        Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler.
+                    </p>
+                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">Paket 2: Shader Kütüphanesi</h3>
+                    <p class="card-description">
+                        Özel tasarlanmış shader koleksiyonu. Görsel efektler, 
+                        particle sistemleri ve çeşitli render teknikleri için hazır shaderlar.
+                    </p>
+                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                </div>
+
+                <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="card-title">Paket 3: Ses Yöneticisi</h3>
+                    <p class="card-description">
+                        Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi, 
+                        ses efektleri kontrolü ve dinamik audio mixing özellikleri.
+                    </p>
+                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">İletişim</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-envelope"></i>
+                    <h3>E-posta</h3>
+                    <a href="mailto:iahmetkavras@gmail.com">iahmetkavras@gmail.com</a>
+                </div>
+
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/ahmet-imran-kavra%C5%9F-17907721a/" target="_blank">LinkedIn Profilim</a>
+                </div>
+
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-phone"></i>
+                    <h3>Telefon</h3>
+                    <a href="tel:+905358341387">+90 535 834 13 87</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // AOS animasyonlarını başlat
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Star Wars tarzı yıldızlar oluşturma
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-container');
+            const numberOfStars = 200;
+            
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Rastgele boyut
+                const size = Math.random();
+                if (size > 0.8) {
+                    star.classList.add('large');
+                } else if (size > 0.5) {
+                    star.classList.add('medium');
+                } else {
+                    star.classList.add('small');
+                }
+                
+                // Rastgele pozisyon
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 15 + 's';
+                star.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Kayan yıldızlar oluşturma
+        function createShootingStars() {
+            setInterval(() => {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                shootingStar.style.left = Math.random() * 50 + '%';
+                shootingStar.style.top = Math.random() * 50 + '%';
+                document.body.appendChild(shootingStar);
+                
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 3000);
+            }, 5000);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.nav-bar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(0,0,0,0.95)';
+                navbar.style.borderBottomColor = '#ff8c00';
+            } else {
+                navbar.style.background = 'rgba(0,0,0,0.9)';
+                navbar.style.borderBottomColor = 'rgba(255,140,0,0.3)';
+            }
+        });
+
+        // Scroll indicator gösterme/gizleme
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        });
+
+        // Kart hover efektleri
+        document.querySelectorAll('.project-card, .package-card, .contact-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Mousetracker efekti
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            const floatingShapes = document.querySelectorAll('.shape');
+            floatingShapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.02;
+                const x = (mouseX - window.innerWidth / 2) * speed;
+                const y = (mouseY - window.innerHeight / 2) * speed;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Tıklama efekti - turuncu tema
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: fixed;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(255,140,0,0.4) 0%, transparent 70%);
+                pointer-events: none;
+                left: ${e.clientX - 50}px;
+                top: ${e.clientY - 50}px;
+                animation: rippleExpand 0.6s ease-out;
+                z-index: 9999;
+            `;
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Ripple animasyonu
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleExpand {
+                0% {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes fadeInUp {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Sayfa yüklendiğinde animasyonları başlat
+        window.addEventListener('load', () => {
+            createStars();
+            createShootingStars();
+            
+            // Hero title animasyonu
+            const heroTitle = document.querySelector('.hero-title');
+            heroTitle.style.animation = 'textGlow 3s ease-in-out infinite alternate, fadeInUp 1s ease-out';
+        });
+
+        // Parallax efekti yıldızlar için
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const stars = document.querySelectorAll('.star');
+            
+            stars.forEach((star, index) => {
+                const speed = (index % 3 + 1) * 0.1;
+                star.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
