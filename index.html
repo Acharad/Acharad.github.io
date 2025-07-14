@@ -82,6 +82,383 @@
             }
         }
 
+        /* PACKAGE DETAIL MODAL STYLES */
+        .package-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .package-modal-content {
+            background: linear-gradient(145deg, rgba(255,140,0,0.1), rgba(0,0,0,0.95));
+            margin: 2% auto;
+            padding: 0;
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 20px;
+            width: 95%;
+            max-width: 1400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 60px rgba(255,140,0,0.4);
+        }
+
+        .package-header {
+            padding: 2rem;
+            border-bottom: 2px solid rgba(255,140,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,140,0,0.05);
+        }
+
+        .package-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .package-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(255,140,0,0.3), rgba(255,69,0,0.3));
+            border-radius: 15px;
+            border: 2px solid rgba(255,140,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #ff8c00;
+            box-shadow: 0 10px 20px rgba(255,140,0,0.3);
+        }
+
+        .package-title-section h2 {
+            color: #ff8c00;
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+            text-shadow: 0 0 20px rgba(255,140,0,0.5);
+        }
+
+        .package-category {
+            color: #ccc;
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .close-package-modal {
+            color: #ff8c00;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid transparent;
+        }
+
+        .close-package-modal:hover {
+            color: #000;
+            background: #ff8c00;
+            border-color: #ff8c00;
+            transform: rotate(90deg);
+        }
+
+        .package-body {
+            padding: 2rem;
+        }
+
+        .package-detail-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .package-main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .package-description-card,
+        .package-features-card,
+        .package-requirements-card,
+        .package-changelog-card {
+            background: rgba(255,140,0,0.05);
+            border: 2px solid rgba(255,140,0,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .package-description-card:hover,
+        .package-features-card:hover,
+        .package-requirements-card:hover,
+        .package-changelog-card:hover {
+            border-color: rgba(255,140,0,0.4);
+            background: rgba(255,140,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .package-description-card h3,
+        .package-features-card h3,
+        .package-requirements-card h3,
+        .package-changelog-card h3 {
+            color: #ff8c00;
+            font-size: 1.3rem;
+            margin: 0 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .package-description-card p {
+            color: #ccc;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: rgba(255,140,0,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,140,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255,140,0,0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature-item h4 {
+            color: #ff8c00;
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .feature-item p {
+            color: #ccc;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .requirements-list,
+        .changelog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .requirement-item,
+        .changelog-item {
+            background: rgba(255,140,0,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff8c00;
+        }
+
+        .requirement-item span,
+        .changelog-item .version {
+            color: #ff8c00;
+            font-weight: bold;
+        }
+
+        .requirement-item p,
+        .changelog-item .changes {
+            color: #ccc;
+            margin: 0.5rem 0 0 0;
+            line-height: 1.5;
+        }
+
+        .package-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .download-card,
+        .package-stats-card,
+        .package-tags-card {
+            background: rgba(255,140,0,0.1);
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover,
+        .package-stats-card:hover,
+        .package-tags-card:hover {
+            border-color: rgba(255,140,0,0.5);
+            background: rgba(255,140,0,0.15);
+        }
+
+        .package-version,
+        .package-size,
+        .package-license {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,140,0,0.2);
+        }
+
+        .version-label,
+        .size-label,
+        .license-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .version-number,
+        .size-number,
+        .license-type {
+            color: #ff8c00;
+            font-weight: bold;
+        }
+
+        .download-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .download-btn {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        .download-btn.primary {
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            color: #000;
+            border-color: #ff8c00;
+        }
+
+        .download-btn.secondary {
+            background: transparent;
+            color: #ff8c00;
+            border-color: rgba(255,140,0,0.5);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,140,0,0.3);
+        }
+
+        .download-btn.primary:hover {
+            background: linear-gradient(45deg, #ffa500, #ff6a00);
+        }
+
+        .download-btn.secondary:hover {
+            background: rgba(255,140,0,0.1);
+        }
+
+        .package-stats-card h4,
+        .package-tags-card h4 {
+            color: #ff8c00;
+            font-size: 1.1rem;
+            margin: 0 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(255,140,0,0.1);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            display: block;
+            color: #ff8c00;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255,140,0,0.2);
+            color: #ff8c00;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255,140,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .package-detail-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-header-left {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .package-modal-content {
+                margin: 5% auto;
+                width: 95%;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .hero-section {
             height: 100vh;
             display: flex;
@@ -578,6 +955,267 @@
                 opacity: 0;
             }
         }
+
+        /* PROJECT DETAIL MODAL STYLES */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(255,140,0,0.1), rgba(0,0,0,0.9));
+            margin: 2% auto;
+            padding: 0;
+            border: 2px solid rgba(255,140,0,0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 60px rgba(255,140,0,0.3);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 2px solid rgba(255,140,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,140,0,0.05);
+        }
+
+        .modal-header h2 {
+            color: #ff8c00;
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255,140,0,0.5);
+        }
+
+        .close-modal {
+            color: #ff8c00;
+            float: right;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid transparent;
+        }
+
+        .close-modal:hover {
+            color: #000;
+            background: #ff8c00;
+            border-color: #ff8c00;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .project-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .project-image-section {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, rgba(255,140,0,0.2), rgba(255,69,0,0.2));
+            border-radius: 15px;
+            border: 2px solid rgba(255,140,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #ff8c00;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .project-stats {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255,140,0,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,140,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255,140,0,0.2);
+            transform: translateX(5px);
+        }
+
+        .stat-item i {
+            color: #ff8c00;
+            font-size: 1.2rem;
+        }
+
+        .stat-item span {
+            color: #ccc;
+            font-weight: bold;
+        }
+
+        .project-info-section h3 {
+            color: #ff8c00;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            text-shadow: 0 0 10px rgba(255,140,0,0.3);
+        }
+
+        .project-info-section p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-info-section li {
+            color: #ccc;
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-info-section li::before {
+            content: '▶';
+            color: #ff8c00;
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-btn {
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            color: #000;
+            border-color: #ff8c00;
+        }
+
+        .code-btn {
+            background: transparent;
+            color: #ff8c00;
+            border-color: #ff8c00;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,140,0,0.4);
+        }
+
+        .demo-btn:hover {
+            background: linear-gradient(45deg, #ffa500, #ff6a00);
+        }
+
+        .code-btn:hover {
+            background: #ff8c00;
+            color: #000;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .project-image-section {
+                position: static;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+                width: 95%;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .project-actions {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -651,7 +1289,7 @@
                         Epik fantastik RPG oyunu. Büyülü bir dünyada ejderlerle dolu maceralar, 
                         gelişmiş karakter sistemi ve etkileyici grafikleriyle oyuncuları büyülüyor.
                     </p>
-                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openProjectDetail('dragon-kingdom')">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="200">
@@ -663,7 +1301,7 @@
                         Aksiyon dolu uzay temalı arcade oyunu. Hızlı tempolu savaşlar, 
                         çeşitli uzay gemileri ve sonsuz galaksi keşfi sunan modern bir deneyim.
                     </p>
-                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openProjectDetail('space-warrior')">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="project-card" data-aos="fade-up" data-aos-delay="300">
@@ -675,7 +1313,7 @@
                         Zihin geliştirici puzzle oyunu. 100+ seviye, çeşitli zorluk dereceleri 
                         ve kullanıcı dostu arayüzü ile her yaştan oyuncuya hitap ediyor.
                     </p>
-                    <a href="#" class="card-link">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openProjectDetail('mind-maze')">Detayları Görüntüle <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -695,7 +1333,7 @@
                         Unity geliştiriciler için kapsamlı araç koleksiyonu. 
                         Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler.
                     </p>
-                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                    <a href="#" class="card-link" onclick="openPackageDetail('unity-toolkit')">Paketi İndir <i class="fas fa-download"></i></a>
                 </div>
 
                 <div class="package-card" data-aos="fade-up" data-aos-delay="200">
@@ -707,7 +1345,7 @@
                         Özel tasarlanmış shader koleksiyonu. Görsel efektler, 
                         particle sistemleri ve çeşitli render teknikleri için hazır shaderlar.
                     </p>
-                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                    <a href="#" class="card-link" onclick="openPackageDetail('shader-library')">Paketi İndir <i class="fas fa-download"></i></a>
                 </div>
 
                 <div class="package-card" data-aos="fade-up" data-aos-delay="300">
@@ -719,7 +1357,7 @@
                         Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi, 
                         ses efektleri kontrolü ve dinamik audio mixing özellikleri.
                     </p>
-                    <a href="#" class="card-link">Paketi İndir <i class="fas fa-download"></i></a>
+                    <a href="#" class="card-link" onclick="openPackageDetail('audio-manager')">Paketi İndir <i class="fas fa-download"></i></a>
                 </div>
             </div>
         </div>
@@ -750,6 +1388,153 @@
             </div>
         </div>
     </section>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div id="projectDetailModal" class="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span class="close-modal" onclick="closeProjectDetail()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-grid">
+                    <div class="project-image-section">
+                        <div id="modalImage" class="project-image"></div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span id="modalDate"></span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-code"></i>
+                                <span id="modalTech"></span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-gamepad"></i>
+                                <span id="modalPlatform"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info-section">
+                        <h3>Proje Hakkında</h3>
+                        <p id="modalDescription"></p>
+                        
+                        <h3>Özellikler</h3>
+                        <ul id="modalFeatures"></ul>
+                        
+                        <h3>Teknik Detaylar</h3>
+                        <p id="modalTechnical"></p>
+                        
+                        <div class="project-actions">
+                            <a href="#" id="modalDemoLink" class="action-btn demo-btn">
+                                <i class="fas fa-play"></i> Demo Oyna
+                            </a>
+                            <a href="#" id="modalCodeLink" class="action-btn code-btn">
+                                <i class="fab fa-github"></i> Kod İncele
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PACKAGE DETAIL MODAL -->
+    <div id="packageDetailModal" class="package-modal">
+        <div class="package-modal-content">
+            <div class="package-header">
+                <div class="package-header-left">
+                    <div id="packageIcon" class="package-icon"></div>
+                    <div class="package-title-section">
+                        <h2 id="packageTitle"></h2>
+                        <p id="packageCategory" class="package-category"></p>
+                    </div>
+                </div>
+                <span class="close-package-modal" onclick="closePackageDetail()">&times;</span>
+            </div>
+            
+            <div class="package-body">
+                <div class="package-detail-layout">
+                    <div class="package-main-content">
+                        <div class="package-description-card">
+                            <h3><i class="fas fa-info-circle"></i> Paket Hakkında</h3>
+                            <p id="packageDescription"></p>
+                        </div>
+
+                        <div class="package-features-card">
+                            <h3><i class="fas fa-star"></i> Özellikler</h3>
+                            <div id="packageFeatures" class="features-grid"></div>
+                        </div>
+
+                        <div class="package-requirements-card">
+                            <h3><i class="fas fa-cogs"></i> Sistem Gereksinimleri</h3>
+                            <div id="packageRequirements" class="requirements-list"></div>
+                        </div>
+
+                        <div class="package-changelog-card">
+                            <h3><i class="fas fa-history"></i> Versiyon Geçmişi</h3>
+                            <div id="packageChangelog" class="changelog-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="package-sidebar">
+                        <div class="download-card">
+                            <div class="package-version">
+                                <span class="version-label">Versiyon</span>
+                                <span id="packageVersion" class="version-number"></span>
+                            </div>
+                            <div class="package-size">
+                                <span class="size-label">Boyut</span>
+                                <span id="packageSize" class="size-number"></span>
+                            </div>
+                            <div class="package-license">
+                                <span class="license-label">Lisans</span>
+                                <span id="packageLicense" class="license-type"></span>
+                            </div>
+                            
+                            <div class="download-actions">
+                                <button id="downloadBtn" class="download-btn primary">
+                                    <i class="fas fa-download"></i>
+                                    <span>Paketi İndir</span>
+                                </button>
+                                <button id="documentationBtn" class="download-btn secondary">
+                                    <i class="fas fa-book"></i>
+                                    <span>Dokümantasyon</span>
+                                </button>
+                                <button id="sourceBtn" class="download-btn secondary">
+                                    <i class="fab fa-github"></i>
+                                    <span>Kaynak Kod</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="package-stats-card">
+                            <h4><i class="fas fa-chart-bar"></i> İstatistikler</h4>
+                            <div class="stat-grid">
+                                <div class="stat-item">
+                                    <span class="stat-number" id="downloadCount">0</span>
+                                    <span class="stat-label">İndirme</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" id="ratingCount">0</span>
+                                    <span class="stat-label">Puan</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" id="lastUpdate">0</span>
+                                    <span class="stat-label">Güncelleme</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="package-tags-card">
+                            <h4><i class="fas fa-tags"></i> Etiketler</h4>
+                            <div id="packageTags" class="tags-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
@@ -936,6 +1721,334 @@
                 const speed = (index % 3 + 1) * 0.1;
                 star.style.transform = `translateY(${scrolled * speed}px)`;
             });
+        });
+
+        // Project Detail Modal Functions
+        const projectData = {
+            'dragon-kingdom': {
+                title: 'Ejder Krallığı',
+                icon: 'fas fa-dragon',
+                date: 'Ocak 2024',
+                tech: 'Unity, C#',
+                platform: 'PC, Mobile',
+                description: 'Ejder Krallığı, büyülü bir dünyada geçen epik bir RPG macerası. Oyuncular güçlü ejderlerle dost olup, karanlık güçlere karşı savaşırken karakterlerini geliştirebilir ve farklı yetenekler kazanabilirler.',
+                features: [
+                    'Açık dünya keşfi ve macera',
+                    'Ejder eğitimi ve gelişimi sistemi',
+                    'Büyü ve silah kombinasyonları',
+                    'Çok oyunculu savaş modu',
+                    'Dinamik hava durumu sistemi',
+                    'Karakter kustomizasyonu'
+                ],
+                technical: 'Unity 2022.3 ile geliştirildi. Prosedürel dünya oluşturma algoritmaları kullanıldı. AI tabanlı ejder davranış sistemi implement edildi. Multiplayer özellikler için Photon Fusion kullanıldı.',
+                demoLink: '#',
+                codeLink: '#'
+            },
+            'space-warrior': {
+                title: 'Uzay Savaşçısı',
+                icon: 'fas fa-space-shuttle',
+                date: 'Mart 2024',
+                tech: 'Unity, C#',
+                platform: 'PC, Console',
+                description: 'Hızlı tempolu uzay savaşı oyunu. Oyuncular farklı uzay gemileriyle galaksiyi keşfederken, düşman filosuyla epic savaşlar yapar ve üslerini savunurlar.',
+                features: [
+                    'Hızlı tempolu uzay savaşları',
+                    'Çeşitli uzay gemisi türleri',
+                    '20+ farklı silah sistemi',
+                    'Galaksi haritası keşfi',
+                    'Üs inşa ve savunma',
+                    'Boss savaşları'
+                ],
+                technical: 'Advanced particle systems için VFX Graph kullanıldı. Performans için Object Pooling implement edildi. Procedural galaxy generation sistemi geliştirildi.',
+                demoLink: '#',
+                codeLink: '#'
+            },
+            'mind-maze': {
+                title: 'Zeka Labirenti',
+                icon: 'fas fa-puzzle-piece',
+                date: 'Mayıs 2024',
+                tech: 'Unity, C#',
+                platform: 'Mobile, Web',
+                description: 'Zihin geliştirici puzzle oyunu. Her seviyede farklı mantık problemleri ve bulmacalar sunan, yaşlıdan gence herkesin oynayabileceği eğitici bir deneyim.',
+                features: [
+                    '100+ benzersiz puzzle seviyesi',
+                    'Artan zorluk sistemi',
+                    'Günlük challange modu',
+                    'İstatistik takibi',
+                    'Sosyal medya paylaşımı',
+                    'Tema ve renk seçenekleri'
+                ],
+                technical: 'Algorithm-based puzzle generation sistemi. Local data storage için SQLite kullanıldı. Cross-platform deployment için Unity Cloud Build pipeline kuruldu.',
+                demoLink: '#',
+                codeLink: '#'
+            }
+        };
+
+        function openProjectDetail(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            // Modal elementlerini doldur
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalImage').innerHTML = `<i class="${project.icon}"></i>`;
+            document.getElementById('modalDate').textContent = project.date;
+            document.getElementById('modalTech').textContent = project.tech;
+            document.getElementById('modalPlatform').textContent = project.platform;
+            document.getElementById('modalDescription').textContent = project.description;
+            document.getElementById('modalTechnical').textContent = project.technical;
+            
+            // Features listesi
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            project.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+            
+            // Action buttons
+            document.getElementById('modalDemoLink').href = project.demoLink;
+            document.getElementById('modalCodeLink').href = project.codeLink;
+            
+            // Modal'ı göster
+            document.getElementById('projectDetailModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Arka plan scroll'u engelle
+        }
+
+        function closeProjectDetail() {
+            document.getElementById('projectDetailModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Scroll'u tekrar aç
+        }
+
+        // Modal dışına tıklayınca kapat
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('projectDetailModal');
+            if (event.target === modal) {
+                closeProjectDetail();
+            }
+        });
+
+        // ESC tuşu ile kapat
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeProjectDetail();
+                closePackageDetail();
+            }
+        });
+
+        // Package Detail Modal Functions
+        const packageData = {
+            'unity-toolkit': {
+                title: 'Unity Araç Seti',
+                icon: 'fas fa-tools',
+                category: 'Geliştirici Araçları',
+                version: 'v2.1.3',
+                size: '45 MB',
+                license: 'MIT',
+                description: 'Unity geliştiriciler için kapsamlı araç koleksiyonu. Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler ile geliştirme sürecinizi hızlandırın. Bu paket, deneyimli geliştiricilerin yıllarca biriktirdiği en yararlı araçları bir araya getiriyor.',
+                features: [
+                    {
+                        title: 'Hızlı Prototipleme',
+                        description: 'Drag & drop ile hızlı sahne oluşturma araçları'
+                    },
+                    {
+                        title: 'Performance Optimizer',
+                        description: 'Otomatik performans analizi ve optimizasyon önerileri'
+                    },
+                    {
+                        title: 'Smart Prefab Manager',
+                        description: 'Gelişmiş prefab yönetimi ve versiyon kontrolü'
+                    },
+                    {
+                        title: 'Custom Inspector Tools',
+                        description: 'Özelleştirilebilir inspector araçları'
+                    }
+                ],
+                requirements: [
+                    { name: 'Unity Versiyonu', value: '2021.3 LTS veya üzeri' },
+                    { name: 'Hedef Platform', value: 'Tüm platformlar' },
+                    { name: 'Minimum RAM', value: '4 GB' },
+                    { name: '.NET Sürümü', value: '.NET Standard 2.1' }
+                ],
+                changelog: [
+                    { version: 'v2.1.3', changes: 'Performance optimizer iyileştirmeleri, Unity 2023 desteği eklendi' },
+                    { version: 'v2.1.0', changes: 'Yeni custom inspector tools eklendi, UI/UX iyileştirmeleri' },
+                    { version: 'v2.0.5', changes: 'Smart prefab manager güncellemeleri, bug fixes' }
+                ],
+                downloadCount: '1.2K',
+                rating: '4.8',
+                lastUpdate: '2 gün',
+                tags: ['Unity', 'Tools', 'Optimization', 'Productivity', 'Editor']
+            },
+            'shader-library': {
+                title: 'Shader Kütüphanesi',
+                icon: 'fas fa-palette',
+                category: 'Görsel Efektler',
+                version: 'v1.8.2',
+                size: '128 MB',
+                license: 'Creative Commons',
+                description: 'Özel tasarlanmış shader koleksiyonu. Görsel efektler, particle sistemleri ve çeşitli render teknikleri için hazır shaderlar. AAA kalitesinde görsel efektler elde etmek için ihtiyacınız olan her şey bu pakette.',
+                features: [
+                    {
+                        title: 'PBR Shaderlar',
+                        description: 'Physically Based Rendering ile gerçekçi materyaller'
+                    },
+                    {
+                        title: 'VFX Particle Shaders',
+                        description: 'Etkileyici particle efektleri için özel shaderlar'
+                    },
+                    {
+                        title: 'Stylized Rendering',
+                        description: 'Cartoon ve stylized görünüm için shaderlar'
+                    },
+                    {
+                        title: 'Post Processing Effects',
+                        description: 'Gelişmiş post-processing shader koleksiyonu'
+                    }
+                ],
+                requirements: [
+                    { name: 'Unity Versiyonu', value: '2022.1 veya üzeri' },
+                    { name: 'Render Pipeline', value: 'URP/HDRP desteği' },
+                    { name: 'GPU', value: 'DirectX 11/OpenGL 4.0+' },
+                    { name: 'Shader Model', value: 'SM 4.0+' }
+                ],
+                changelog: [
+                    { version: 'v1.8.2', changes: 'URP 14 desteği, yeni hologram shader eklendi' },
+                    { version: 'v1.8.0', changes: 'HDRP desteği genişletildi, performance iyileştirmeleri' },
+                    { version: 'v1.7.5', changes: 'Yeni toon shader varyantları, bug fixes' }
+                ],
+                downloadCount: '856',
+                rating: '4.9',
+                lastUpdate: '5 gün',
+                tags: ['Shaders', 'VFX', 'Rendering', 'Materials', 'Graphics']
+            },
+            'audio-manager': {
+                title: 'Ses Yöneticisi',
+                icon: 'fas fa-music',
+                category: 'Audio Sistemi',
+                version: 'v3.0.1',
+                size: '23 MB',
+                license: 'GPL v3',
+                description: 'Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi, ses efektleri kontrolü ve dinamik audio mixing özellikleri. 3D audio desteği ve gerçek zamanlı audio processing ile profesyonel ses deneyimi.',
+                features: [
+                    {
+                        title: '3D Audio System',
+                        description: 'Spatial audio ve binaural ses desteği'
+                    },
+                    {
+                        title: 'Dynamic Music',
+                        description: 'Oyun durumuna göre dinamik müzik geçişleri'
+                    },
+                    {
+                        title: 'Audio Pool Manager',
+                        description: 'Performanslı ses dosyası yönetimi'
+                    },
+                    {
+                        title: 'Real-time Effects',
+                        description: 'Gerçek zamanlı reverb, echo ve filter efektleri'
+                    }
+                ],
+                requirements: [
+                    { name: 'Unity Versiyonu', value: '2020.3 LTS veya üzeri' },
+                    { name: 'Audio System', value: 'Unity Audio 5.6+' },
+                    { name: 'Platform', value: 'Windows, Mac, Linux, Mobile' },
+                    { name: 'Codec Desteği', value: 'OGG, WAV, MP3' }
+                ],
+                changelog: [
+                    { version: 'v3.0.1', changes: 'WebGL audio iyileştirmeleri, mobile optimization' },
+                    { version: 'v3.0.0', changes: 'Yeni 3D audio system, UI redesign' },
+                    { version: 'v2.9.8', changes: 'Performance optimizations, memory leak fixes' }
+                ],
+                downloadCount: '643',
+                rating: '4.7',
+                lastUpdate: '1 hafta',
+                tags: ['Audio', 'Music', 'SFX', '3D Sound', 'Manager']
+            }
+        };
+
+        function openPackageDetail(packageId) {
+            const package = packageData[packageId];
+            if (!package) return;
+
+            // Modal elementlerini doldur
+            document.getElementById('packageTitle').textContent = package.title;
+            document.getElementById('packageIcon').innerHTML = `<i class="${package.icon}"></i>`;
+            document.getElementById('packageCategory').textContent = package.category;
+            document.getElementById('packageVersion').textContent = package.version;
+            document.getElementById('packageSize').textContent = package.size;
+            document.getElementById('packageLicense').textContent = package.license;
+            document.getElementById('packageDescription').textContent = package.description;
+            
+            // Features
+            const featuresContainer = document.getElementById('packageFeatures');
+            featuresContainer.innerHTML = '';
+            package.features.forEach(feature => {
+                const featureDiv = document.createElement('div');
+                featureDiv.className = 'feature-item';
+                featureDiv.innerHTML = `
+                    <h4>${feature.title}</h4>
+                    <p>${feature.description}</p>
+                `;
+                featuresContainer.appendChild(featureDiv);
+            });
+            
+            // Requirements
+            const requirementsContainer = document.getElementById('packageRequirements');
+            requirementsContainer.innerHTML = '';
+            package.requirements.forEach(req => {
+                const reqDiv = document.createElement('div');
+                reqDiv.className = 'requirement-item';
+                reqDiv.innerHTML = `
+                    <span>${req.name}:</span>
+                    <p>${req.value}</p>
+                `;
+                requirementsContainer.appendChild(reqDiv);
+            });
+            
+            // Changelog
+            const changelogContainer = document.getElementById('packageChangelog');
+            changelogContainer.innerHTML = '';
+            package.changelog.forEach(change => {
+                const changeDiv = document.createElement('div');
+                changeDiv.className = 'changelog-item';
+                changeDiv.innerHTML = `
+                    <div class="version">${change.version}</div>
+                    <div class="changes">${change.changes}</div>
+                `;
+                changelogContainer.appendChild(changeDiv);
+            });
+            
+            // Stats
+            document.getElementById('downloadCount').textContent = package.downloadCount;
+            document.getElementById('ratingCount').textContent = package.rating;
+            document.getElementById('lastUpdate').textContent = package.lastUpdate;
+            
+            // Tags
+            const tagsContainer = document.getElementById('packageTags');
+            tagsContainer.innerHTML = '';
+            package.tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'tag';
+                tagSpan.textContent = tag;
+                tagsContainer.appendChild(tagSpan);
+            });
+            
+            // Modal'ı göster
+            document.getElementById('packageDetailModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePackageDetail() {
+            document.getElementById('packageDetailModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Package modal dışına tıklayınca kapat
+        window.addEventListener('click', function(event) {
+            const packageModal = document.getElementById('packageDetailModal');
+            if (event.target === packageModal) {
+                closePackageDetail();
+            }
         });
     </script>
 </body>
