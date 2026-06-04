@@ -848,6 +848,10 @@
             box-shadow: 0 10px 20px rgba(255,140,0,0.3);
         }
 
+        .contact-item.clickable {
+            cursor: pointer;
+        }
+
         .contact-item i {
             font-size: 2rem;
             color: #ff8c00;
@@ -2254,6 +2258,18 @@
             if (event.target === packageModal) {
                 closePackageDetail();
             }
+        });
+
+        // İletişim kartlarının herhangi bir yerine tıklanınca linki tetikle
+        // (hem üstteki hero kartları hem alttaki iletişim kartları)
+        document.querySelectorAll('.contact-item').forEach(function (item) {
+            const link = item.querySelector('a');
+            if (!link) return;
+            item.classList.add('clickable');
+            item.addEventListener('click', function (event) {
+                if (event.target.closest('a')) return; // linke direkt tıklandıysa tekrar tetikleme
+                link.click();
+            });
         });
     </script>
 </body>
