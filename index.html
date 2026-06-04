@@ -1431,38 +1431,37 @@
             <div class="packages-grid">
                 <div class="package-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-syringe"></i>
                     </div>
-                    <h3 class="card-title" data-i18n="pkg1_title">Paket 1: Unity Araç Seti</h3>
+                    <h3 class="card-title" data-i18n="pkg1_title">MInject</h3>
                     <p class="card-description" data-i18n="pkg1_desc">
-                        Unity geliştiriciler için kapsamlı araç koleksiyonu.
-                        Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler.
+                        Unity için minimalist ve hafif bir Dependency Injection framework'ü.
+                        Attribute tabanlı injection ve ayrıştırılmış bir Signal Bus ile temiz mimari.
                     </p>
-                    <a href="#" class="card-link" onclick="openPackageDetail('unity-toolkit')"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openPackageDetail('minject')"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="package-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-icon">
-                        <i class="fas fa-palette"></i>
+                        <i class="fas fa-cubes"></i>
                     </div>
-                    <h3 class="card-title" data-i18n="pkg2_title">Paket 2: Shader Kütüphanesi</h3>
+                    <h3 class="card-title" data-i18n="pkg2_title">CoreKit</h3>
                     <p class="card-description" data-i18n="pkg2_desc">
-                        Özel tasarlanmış shader koleksiyonu. Görsel efektler,
-                        particle sistemleri ve çeşitli render teknikleri için hazır shaderlar.
+                        Unity için bağımlılıksız bir çekirdek altyapı kütüphanesi: event bus,
+                        service locator, birleşik tick döngüsü ve sıfır-allocation odaklı kilitleme.
                     </p>
-                    <a href="#" class="card-link" onclick="openPackageDetail('shader-library')"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openPackageDetail('corekit')"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="package-card coming-soon" data-aos="fade-up" data-aos-delay="300">
+                    <span class="status-badge" data-i18n="status_soon">Çok Yakında</span>
                     <div class="card-icon">
-                        <i class="fas fa-music"></i>
+                        <i class="fas fa-cube"></i>
                     </div>
-                    <h3 class="card-title" data-i18n="pkg3_title">Paket 3: Ses Yöneticisi</h3>
+                    <h3 class="card-title" data-i18n="pkg3_title">Paket #3</h3>
                     <p class="card-description" data-i18n="pkg3_desc">
-                        Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi,
-                        ses efektleri kontrolü ve dinamik audio mixing özellikleri.
+                        Yeni bir paket geliştirme aşamasında. Detaylar yakında paylaşılacaktır.
                     </p>
-                    <a href="#" class="card-link" onclick="openPackageDetail('audio-manager')"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1559,22 +1558,22 @@
                 <div class="package-detail-layout">
                     <div class="package-main-content">
                         <div class="package-description-card">
-                            <h3><i class="fas fa-info-circle"></i> Paket Hakkında</h3>
+                            <h3><i class="fas fa-info-circle"></i> <span data-i18n="pkg_about">Paket Hakkında</span></h3>
                             <p id="packageDescription"></p>
                         </div>
 
                         <div class="package-features-card">
-                            <h3><i class="fas fa-star"></i> Özellikler</h3>
+                            <h3><i class="fas fa-star"></i> <span data-i18n="pkg_features">Özellikler</span></h3>
                             <div id="packageFeatures" class="features-grid"></div>
                         </div>
 
                         <div class="package-requirements-card">
-                            <h3><i class="fas fa-cogs"></i> Sistem Gereksinimleri</h3>
+                            <h3><i class="fas fa-cogs"></i> <span data-i18n="pkg_requirements">Sistem Gereksinimleri</span></h3>
                             <div id="packageRequirements" class="requirements-list"></div>
                         </div>
 
                         <div class="package-changelog-card">
-                            <h3><i class="fas fa-history"></i> Versiyon Geçmişi</h3>
+                            <h3><i class="fas fa-history"></i> <span data-i18n="pkg_changelog">Versiyon Geçmişi</span></h3>
                             <div id="packageChangelog" class="changelog-list"></div>
                         </div>
                     </div>
@@ -1582,54 +1581,28 @@
                     <div class="package-sidebar">
                         <div class="download-card">
                             <div class="package-version">
-                                <span class="version-label">Versiyon</span>
+                                <span class="version-label" data-i18n="pkg_version_label">Versiyon</span>
                                 <span id="packageVersion" class="version-number"></span>
                             </div>
                             <div class="package-size">
-                                <span class="size-label">Boyut</span>
+                                <span class="size-label" data-i18n="pkg_size_label">Boyut</span>
                                 <span id="packageSize" class="size-number"></span>
                             </div>
                             <div class="package-license">
-                                <span class="license-label">Lisans</span>
+                                <span class="license-label" data-i18n="pkg_license_label">Lisans</span>
                                 <span id="packageLicense" class="license-type"></span>
                             </div>
-                            
-                            <div class="download-actions">
-                                <button id="downloadBtn" class="download-btn primary">
-                                    <i class="fas fa-download"></i>
-                                    <span>Paketi İndir</span>
-                                </button>
-                                <button id="documentationBtn" class="download-btn secondary">
-                                    <i class="fas fa-book"></i>
-                                    <span>Dokümantasyon</span>
-                                </button>
-                                <button id="sourceBtn" class="download-btn secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Kaynak Kod</span>
-                                </button>
-                            </div>
-                        </div>
 
-                        <div class="package-stats-card">
-                            <h4><i class="fas fa-chart-bar"></i> İstatistikler</h4>
-                            <div class="stat-grid">
-                                <div class="stat-item">
-                                    <span class="stat-number" id="downloadCount">0</span>
-                                    <span class="stat-label">İndirme</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number" id="ratingCount">0</span>
-                                    <span class="stat-label">Puan</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-number" id="lastUpdate">0</span>
-                                    <span class="stat-label">Güncelleme</span>
-                                </div>
+                            <div class="download-actions">
+                                <button id="sourceBtn" class="download-btn primary">
+                                    <i class="fab fa-github"></i>
+                                    <span data-i18n="btn_source">Kaynağı İncele</span>
+                                </button>
                             </div>
                         </div>
 
                         <div class="package-tags-card">
-                            <h4><i class="fas fa-tags"></i> Etiketler</h4>
+                            <h4><i class="fas fa-tags"></i> <span data-i18n="pkg_tags_label">Etiketler</span></h4>
                             <div id="packageTags" class="tags-container"></div>
                         </div>
                     </div>
@@ -1659,7 +1632,7 @@
                 hero_summary: `
                     <p><strong>Yıldız Teknik Üniversitesi</strong> Bilgisayar Mühendisliği öğrencisi; ölçeklenebilir oyun mimarileri, akıcı mekanikler ve yüksek performanslı sistemler geliştirmeye odaklanmış bir Oyun Geliştirme Mühendisiyim. Mobil oyun sektörünün mutfağındaki deneyimimi, iki yılı aşkın bir süre <strong>Narcade</strong> bünyesinde görev alarak pekiştirdim. Bu süreçte, yüksek trafikli <strong>Match-3</strong> ve <strong>Match-3D</strong> oyunları için kritik oynanış özelliklerini hayata geçirmekten, fizik optimizasyonlarına ve tüm şirket portfolyosunda kullanılan küresel titreşim sistemleri gibi yeniden kullanılabilir ortak framework'ler inşa etmeye kadar geniş bir sorumluluk üstlendim.</p>
                     <p>Teknik odağım, <strong>Unity</strong> içinde ileri düzey <strong>C#</strong> optimizasyonları yapmaktan, özellikle boxing kaynaklı bellek sızıntılarını önleyen ve oyun performansını zirvede tutan sıfır bellek tahsisli (<strong>zero-allocation</strong>) mimariler tasarlamaktan geçiyor. Sadece canlıya hazır, temiz kod yazmakla kalmıyor, aynı zamanda geliştirici ekosistemini büyütmeye de büyük önem veriyorum. Eski <strong>SkyLab</strong> Oyun Geliştirme Takım Lideri olarak, teknik eğitim müfredatları hazırladım, üniversite çapında Game Jam'ler organize ettim ve onlarca mühendis adayına sektörel standartlarda mentorluk yaptım. Karmaşık mekanik problemlerin çözümü, temiz kod desenleri ve teknik liderliğin kesişiminde üretmeyi seviyorum.</p>`,
-                projects_title: "Projelerim",
+                projects_title: "Projeler & Assetler",
                 proj1_title: "Match-2",
                 proj1_desc: "Unity ile geliştirilmiş, performans odaklı bir Match-2 bulmaca oyunu framework'ü. Bu proje; servis tabanlı mimariyi, özel havuzlama (pooling) yoluyla verimli bellek yönetimini ve güçlü oynanış algoritmalarını sergilemektedir.",
                 proj2_title: "Liquid Sort",
@@ -1668,16 +1641,25 @@
                 proj3_desc: "Yeni proje yolda. Detaylar yakında paylaşılacaktır.",
                 status_soon: "Çok Yakında",
                 btn_code: "Kodu İncele",
+                btn_source: "Kaynağı İncele",
                 modal_about: "Proje Hakkında",
                 modal_features: "Özellikler",
                 modal_technical: "Teknik Detaylar",
-                packages_title: "Paketlerim",
-                pkg1_title: "Paket 1: Unity Araç Seti",
-                pkg1_desc: "Unity geliştiriciler için kapsamlı araç koleksiyonu. Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler.",
-                pkg2_title: "Paket 2: Shader Kütüphanesi",
-                pkg2_desc: "Özel tasarlanmış shader koleksiyonu. Görsel efektler, particle sistemleri ve çeşitli render teknikleri için hazır shaderlar.",
-                pkg3_title: "Paket 3: Ses Yöneticisi",
-                pkg3_desc: "Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi, ses efektleri kontrolü ve dinamik audio mixing özellikleri.",
+                pkg_about: "Paket Hakkında",
+                pkg_features: "Özellikler",
+                pkg_requirements: "Teknik Detaylar",
+                pkg_changelog: "Versiyon Geçmişi",
+                pkg_version_label: "Versiyon",
+                pkg_size_label: "Boyut",
+                pkg_license_label: "Lisans",
+                pkg_tags_label: "Etiketler",
+                packages_title: "Paketler & Araçlar",
+                pkg1_title: "MInject",
+                pkg1_desc: "Unity için minimalist ve hafif bir Dependency Injection framework'ü. Attribute tabanlı injection ve ayrıştırılmış bir Signal Bus ile temiz mimari.",
+                pkg2_title: "CoreKit",
+                pkg2_desc: "Unity için bağımlılıksız bir çekirdek altyapı kütüphanesi: event bus, service locator, birleşik tick döngüsü ve sıfır-allocation odaklı kilitleme.",
+                pkg3_title: "Paket #3",
+                pkg3_desc: "Yeni bir paket geliştirme aşamasında. Detaylar yakında paylaşılacaktır.",
                 btn_details: "Detayları Görüntüle",
                 contact_title: "İletişim",
                 contact_email: "E-posta",
@@ -1693,7 +1675,7 @@
                 hero_summary: `
                     <p>I am a Game Engineer and Computer Engineering student at <strong>Yıldız Technical University</strong>, driven by a passion for building scalable game architectures, fluid mechanics, and high-performance systems. Over the past few years, I have honed my skills directly within the mobile gaming industry, most notably spending over two years at <strong>Narcade</strong>. During my time there, I specialized in shipping core gameplay features, optimizing physics, and developing reusable cross-game frameworks—such as global vibration subsystems—for high-traffic <strong>Match-3</strong> and <strong>Match-3D</strong> titles.</p>
                     <p>My technical depth focuses heavily on advanced <strong>C#</strong> optimization within <strong>Unity</strong>, specifically engineering <strong>zero-allocation</strong> architectures to eliminate boxing leaks and minimize garbage collection overhead. Beyond writing production-ready code, I am deeply committed to fostering growth within the developer ecosystem. As the former Game Development Lead at <strong>SkyLab</strong>, I curated technical training curriculums, organized campus-wide Game Jams, and mentored dozens of aspiring engineers. I thrive at the intersection of complex mechanical problem-solving, clean code patterns, and technical leadership.</p>`,
-                projects_title: "My Projects",
+                projects_title: "Projects & Assets",
                 proj1_title: "Match-2",
                 proj1_desc: "A performance-oriented Match-2 puzzle game framework built in Unity. This project demonstrates a service-based architecture, efficient memory management via custom pooling, and robust gameplay algorithms.",
                 proj2_title: "Liquid Sort",
@@ -1702,16 +1684,25 @@
                 proj3_desc: "Next project is brewing. Details will be disclosed soon.",
                 status_soon: "Coming Soon",
                 btn_code: "View Code",
+                btn_source: "View Source",
                 modal_about: "About the Project",
                 modal_features: "Features",
                 modal_technical: "Technical Details",
-                packages_title: "My Packages",
-                pkg1_title: "Package 1: Unity Toolkit",
-                pkg1_desc: "A comprehensive tool collection for Unity developers. Rapid prototyping, optimization tools, and handy helper scripts.",
-                pkg2_title: "Package 2: Shader Library",
-                pkg2_desc: "A custom-designed shader collection. Ready-made shaders for visual effects, particle systems, and various rendering techniques.",
-                pkg3_title: "Package 3: Audio Manager",
-                pkg3_desc: "A comprehensive solution for game audio. Music management, sound effect control, and dynamic audio mixing features.",
+                pkg_about: "About the Package",
+                pkg_features: "Features",
+                pkg_requirements: "Technical Details",
+                pkg_changelog: "Version History",
+                pkg_version_label: "Version",
+                pkg_size_label: "Footprint",
+                pkg_license_label: "License",
+                pkg_tags_label: "Tags",
+                packages_title: "Packages & Tools",
+                pkg1_title: "MInject",
+                pkg1_desc: "A minimalist, lightweight Dependency Injection framework for Unity. Clean architecture through attribute-based injection and a decoupled Signal Bus.",
+                pkg2_title: "CoreKit",
+                pkg2_desc: "A dependency-free core infrastructure library for Unity: an event bus, service locator, unified tick loop, and zero-allocation-focused locking.",
+                pkg3_title: "Package #3",
+                pkg3_desc: "A new package is in development. Details will be disclosed soon.",
                 btn_details: "View Details",
                 contact_title: "Contact",
                 contact_email: "Email",
@@ -2057,224 +2048,120 @@
 
         // Package Detail Modal Functions
         const packageData = {
-            'unity-toolkit': {
-                title: 'Unity Araç Seti',
-                icon: 'fas fa-tools',
-                category: 'Geliştirici Araçları',
-                version: 'v2.1.3',
-                size: '45 MB',
+            'minject': {
+                title: 'MInject',
+                icon: 'fas fa-syringe',
+                category: 'Bağımlılık Enjeksiyonu (DI)',
+                version: 'v1.0.0',
+                size: 'Hafif',
                 license: 'MIT',
-                description: 'Unity geliştiriciler için kapsamlı araç koleksiyonu. Hızlı prototipleme, optimizasyon araçları ve kullanışlı yardımcı scriptler ile geliştirme sürecinizi hızlandırın. Bu paket, deneyimli geliştiricilerin yıllarca biriktirdiği en yararlı araçları bir araya getiriyor.',
+                repo: 'https://github.com/Acharad/MInject',
+                description: 'Zenject\'ten ilham alan, Unity için minimalist ve hafif bir Dependency Injection (DI) framework\'ü. MInject; büyük framework\'lerin performans yükü ve karmaşıklığı olmadan, attribute tabanlı temiz bir enjeksiyon sistemi ve ayrıştırılmış (decoupled) bir Signal Bus sunmak için tasarlanmıştır. Kurulum sihirbazları yoktur — context prefab\'ını sahneye bırakıp doğrudan binding yapmaya başlarsınız.',
                 features: [
-                    {
-                        title: 'Hızlı Prototipleme',
-                        description: 'Drag & drop ile hızlı sahne oluşturma araçları'
-                    },
-                    {
-                        title: 'Performance Optimizer',
-                        description: 'Otomatik performans analizi ve optimizasyon önerileri'
-                    },
-                    {
-                        title: 'Smart Prefab Manager',
-                        description: 'Gelişmiş prefab yönetimi ve versiyon kontrolü'
-                    },
-                    {
-                        title: 'Custom Inspector Tools',
-                        description: 'Özelleştirilebilir inspector araçları'
-                    }
+                    { title: 'Attribute Tabanlı Enjeksiyon', description: 'Alanları veya property\'leri [Inject] ile işaretleyerek bağımlılıkları otomatik çözümleyin.' },
+                    { title: 'Hiyerarşik Context\'ler', description: 'Kapsamlı çözümleme için ProjectContext (Global) ve SceneContext (Local) desteği.' },
+                    { title: 'Signal Bus Sistemi', description: 'Gönderici ile alıcı mantığını ayrıştıran dahili olay (event) toplama sistemi.' },
+                    { title: 'Esnek Binding', description: 'MonoInstaller veya ScriptableInstaller üzerinden arayüzleri somut uygulamalara bağlayın.' },
+                    { title: 'Sıfır Boilerplate', description: 'Karmaşık kurulum sihirbazı yok; context prefab\'ını bırakın ve binding\'e başlayın.' },
+                    { title: 'Otomatik Çözümleme', description: 'Bağımlılıklar, Start() çağrılmadan önce otomatik olarak enjekte edilir.' }
                 ],
                 requirements: [
                     { name: 'Unity Versiyonu', value: '2021.3 LTS veya üzeri' },
-                    { name: 'Hedef Platform', value: 'Tüm platformlar' },
-                    { name: 'Minimum RAM', value: '4 GB' },
-                    { name: '.NET Sürümü', value: '.NET Standard 2.1' }
+                    { name: 'Dil', value: 'C#' },
+                    { name: 'Mimari', value: 'Attribute tabanlı DI + Signal Bus' },
+                    { name: 'Bağımlılık', value: 'Yok (Zero Dependency)' }
                 ],
                 changelog: [
-                    { version: 'v2.1.3', changes: 'Performance optimizer iyileştirmeleri, Unity 2023 desteği eklendi' },
-                    { version: 'v2.1.0', changes: 'Yeni custom inspector tools eklendi, UI/UX iyileştirmeleri' },
-                    { version: 'v2.0.5', changes: 'Smart prefab manager güncellemeleri, bug fixes' }
+                    { version: 'v1.0.0', changes: 'İlk genel sürüm: attribute tabanlı injection, hiyerarşik context\'ler ve Signal Bus.' }
                 ],
-                downloadCount: '1.2K',
-                rating: '4.8',
-                lastUpdate: '2 gün',
-                tags: ['Unity', 'Tools', 'Optimization', 'Productivity', 'Editor']
+                tags: ['Unity', 'Dependency Injection', 'DI', 'Signal Bus', 'C#', 'Architecture']
             },
-            'shader-library': {
-                title: 'Shader Kütüphanesi',
-                icon: 'fas fa-palette',
-                category: 'Görsel Efektler',
-                version: 'v1.8.2',
-                size: '128 MB',
-                license: 'Creative Commons',
-                description: 'Özel tasarlanmış shader koleksiyonu. Görsel efektler, particle sistemleri ve çeşitli render teknikleri için hazır shaderlar. AAA kalitesinde görsel efektler elde etmek için ihtiyacınız olan her şey bu pakette.',
+            'corekit': {
+                title: 'CoreKit',
+                icon: 'fas fa-cubes',
+                category: 'Çekirdek Altyapı',
+                version: 'v1.0.0',
+                size: 'Hafif',
+                license: 'MIT',
+                repo: 'https://github.com/Acharad/CoreKit',
+                description: 'Unity için bir çekirdek yardımcı altyapı framework\'ü: event bus, service locator, birleşik tick döngüsü ve durum kilitleme primitifi. Allocation\'a duyarlı, bağımlılıksız ve canlı (production) oyun kodu için tasarlanmıştır. Her modül tek başına kullanılabilir ve sıcak yollarda kare başına sıfır bellek tahsisi (0 B) hedefler.',
                 features: [
-                    {
-                        title: 'PBR Shaderlar',
-                        description: 'Physically Based Rendering ile gerçekçi materyaller'
-                    },
-                    {
-                        title: 'VFX Particle Shaders',
-                        description: 'Etkileyici particle efektleri için özel shaderlar'
-                    },
-                    {
-                        title: 'Stylized Rendering',
-                        description: 'Cartoon ve stylized görünüm için shaderlar'
-                    },
-                    {
-                        title: 'Post Processing Effects',
-                        description: 'Gelişmiş post-processing shader koleksiyonu'
-                    }
+                    { title: 'Sıfır Allocation (Hot Path)', description: 'Event gönderimi, ticking, kilit kontrolü ve servis çözümlemesi steady-state\'te 0 byte heap tahsisi yapar.' },
+                    { title: 'Boxing\'siz EventBus', description: 'where T : struct, IEvent ile kısıtlı, baştan sona generic; değer tipli olaylar boxing olmadan gönderilir.' },
+                    { title: 'Service Locator', description: 'Tür + opsiyonel etiket ile anahtarlanan, allocation\'sız O(1) servis çözümleme.' },
+                    { title: 'Birleşik Tick Döngüsü', description: 'Onlarca MonoBehaviour.Update yerine, TickPriority\'ye göre sıralı tek bir deterministik döngü.' },
+                    { title: 'Referans Sayımlı Kilitleme', description: 'ServiceLocker ile sebep tabanlı, çakışmasız sistem duraklatma (cutscene / loading).' },
+                    { title: 'Bağımlılıksız Tasarım', description: 'Unity API üzerine saf C#; çözümlenecek, sürümlenecek veya çakışacak hiçbir şey yok.' }
                 ],
                 requirements: [
-                    { name: 'Unity Versiyonu', value: '2022.1 veya üzeri' },
-                    { name: 'Render Pipeline', value: 'URP/HDRP desteği' },
-                    { name: 'GPU', value: 'DirectX 11/OpenGL 4.0+' },
-                    { name: 'Shader Model', value: 'SM 4.0+' }
+                    { name: 'Unity Versiyonu', value: '2021.3 LTS veya üzeri' },
+                    { name: 'Kurulum', value: 'Unity Package Manager (Git URL)' },
+                    { name: 'Bellek Profili', value: 'Steady-state 0 B allocation' },
+                    { name: 'Bağımlılık', value: 'Yok (Saf C#)' }
                 ],
                 changelog: [
-                    { version: 'v1.8.2', changes: 'URP 14 desteği, yeni hologram shader eklendi' },
-                    { version: 'v1.8.0', changes: 'HDRP desteği genişletildi, performance iyileştirmeleri' },
-                    { version: 'v1.7.5', changes: 'Yeni toon shader varyantları, bug fixes' }
+                    { version: 'v1.0.0', changes: 'İlk sürüm: EventBus, ServiceProvider, TickService ve ServiceLocker modülleri.' }
                 ],
-                downloadCount: '856',
-                rating: '4.9',
-                lastUpdate: '5 gün',
-                tags: ['Shaders', 'VFX', 'Rendering', 'Materials', 'Graphics']
-            },
-            'audio-manager': {
-                title: 'Ses Yöneticisi',
-                icon: 'fas fa-music',
-                category: 'Audio Sistemi',
-                version: 'v3.0.1',
-                size: '23 MB',
-                license: 'GPL v3',
-                description: 'Oyun ses sistemi için kapsamlı çözüm. Müzik yönetimi, ses efektleri kontrolü ve dinamik audio mixing özellikleri. 3D audio desteği ve gerçek zamanlı audio processing ile profesyonel ses deneyimi.',
-                features: [
-                    {
-                        title: '3D Audio System',
-                        description: 'Spatial audio ve binaural ses desteği'
-                    },
-                    {
-                        title: 'Dynamic Music',
-                        description: 'Oyun durumuna göre dinamik müzik geçişleri'
-                    },
-                    {
-                        title: 'Audio Pool Manager',
-                        description: 'Performanslı ses dosyası yönetimi'
-                    },
-                    {
-                        title: 'Real-time Effects',
-                        description: 'Gerçek zamanlı reverb, echo ve filter efektleri'
-                    }
-                ],
-                requirements: [
-                    { name: 'Unity Versiyonu', value: '2020.3 LTS veya üzeri' },
-                    { name: 'Audio System', value: 'Unity Audio 5.6+' },
-                    { name: 'Platform', value: 'Windows, Mac, Linux, Mobile' },
-                    { name: 'Codec Desteği', value: 'OGG, WAV, MP3' }
-                ],
-                changelog: [
-                    { version: 'v3.0.1', changes: 'WebGL audio iyileştirmeleri, mobile optimization' },
-                    { version: 'v3.0.0', changes: 'Yeni 3D audio system, UI redesign' },
-                    { version: 'v2.9.8', changes: 'Performance optimizations, memory leak fixes' }
-                ],
-                downloadCount: '643',
-                rating: '4.7',
-                lastUpdate: '1 hafta',
-                tags: ['Audio', 'Music', 'SFX', '3D Sound', 'Manager']
+                tags: ['Unity', 'Event Bus', 'Service Locator', 'Zero-Allocation', 'C#', 'Performance']
             }
         };
 
         const packageDataEN = {
-            'unity-toolkit': {
-                title: 'Unity Toolkit',
-                icon: 'fas fa-tools',
-                category: 'Developer Tools',
-                version: 'v2.1.3',
-                size: '45 MB',
+            'minject': {
+                title: 'MInject',
+                icon: 'fas fa-syringe',
+                category: 'Dependency Injection (DI)',
+                version: 'v1.0.0',
+                size: 'Lightweight',
                 license: 'MIT',
-                description: 'A comprehensive tool collection for Unity developers. Speed up your workflow with rapid prototyping, optimization tools, and handy helper scripts. This package brings together the most useful tools experienced developers have collected over the years.',
+                repo: 'https://github.com/Acharad/MInject',
+                description: 'A minimalist, lightweight Dependency Injection (DI) framework for Unity, inspired by Zenject. MInject is designed to offer a clean, attribute-based injection system and a decoupled Signal Bus without the performance overhead or complexity of larger frameworks. There are no setup wizards — drop the context prefab into your scene and start binding right away.',
                 features: [
-                    { title: 'Rapid Prototyping', description: 'Drag & drop tools for fast scene creation' },
-                    { title: 'Performance Optimizer', description: 'Automatic performance analysis and optimization suggestions' },
-                    { title: 'Smart Prefab Manager', description: 'Advanced prefab management and version control' },
-                    { title: 'Custom Inspector Tools', description: 'Customizable inspector utilities' }
+                    { title: 'Attribute-Based Injection', description: 'Mark fields or properties with [Inject] to resolve dependencies automatically.' },
+                    { title: 'Hierarchical Contexts', description: 'ProjectContext (Global) and SceneContext (Local) support for scoped resolution.' },
+                    { title: 'Signal Bus System', description: 'Built-in event aggregation that decouples sender and receiver logic.' },
+                    { title: 'Flexible Binding', description: 'Bind interfaces to concrete implementations via MonoInstaller or ScriptableInstaller.' },
+                    { title: 'Zero Boilerplate', description: 'No complex setup wizards; drop the context prefab and start binding.' },
+                    { title: 'Automatic Resolution', description: 'Dependencies are injected automatically before Start() is called.' }
                 ],
                 requirements: [
                     { name: 'Unity Version', value: '2021.3 LTS or higher' },
-                    { name: 'Target Platform', value: 'All platforms' },
-                    { name: 'Minimum RAM', value: '4 GB' },
-                    { name: '.NET Version', value: '.NET Standard 2.1' }
+                    { name: 'Language', value: 'C#' },
+                    { name: 'Architecture', value: 'Attribute-based DI + Signal Bus' },
+                    { name: 'Dependencies', value: 'None (Zero Dependency)' }
                 ],
                 changelog: [
-                    { version: 'v2.1.3', changes: 'Performance optimizer improvements, Unity 2023 support added' },
-                    { version: 'v2.1.0', changes: 'New custom inspector tools added, UI/UX improvements' },
-                    { version: 'v2.0.5', changes: 'Smart prefab manager updates, bug fixes' }
+                    { version: 'v1.0.0', changes: 'Initial public release: attribute-based injection, hierarchical contexts, and Signal Bus.' }
                 ],
-                downloadCount: '1.2K',
-                rating: '4.8',
-                lastUpdate: '2 days',
-                tags: ['Unity', 'Tools', 'Optimization', 'Productivity', 'Editor']
+                tags: ['Unity', 'Dependency Injection', 'DI', 'Signal Bus', 'C#', 'Architecture']
             },
-            'shader-library': {
-                title: 'Shader Library',
-                icon: 'fas fa-palette',
-                category: 'Visual Effects',
-                version: 'v1.8.2',
-                size: '128 MB',
-                license: 'Creative Commons',
-                description: 'A custom-designed shader collection. Ready-made shaders for visual effects, particle systems, and various rendering techniques. Everything you need to achieve AAA-quality visuals is in this package.',
+            'corekit': {
+                title: 'CoreKit',
+                icon: 'fas fa-cubes',
+                category: 'Core Infrastructure',
+                version: 'v1.0.0',
+                size: 'Lightweight',
+                license: 'MIT',
+                repo: 'https://github.com/Acharad/CoreKit',
+                description: 'A core utility framework for Unity: an event bus, a service locator, a unified tick loop, and a state-locking primitive. Allocation-conscious, dependency-free, and designed for production game code. Each module is usable on its own, and the design targets zero per-frame heap allocation on hot paths (0 B).',
                 features: [
-                    { title: 'PBR Shaders', description: 'Realistic materials with Physically Based Rendering' },
-                    { title: 'VFX Particle Shaders', description: 'Custom shaders for striking particle effects' },
-                    { title: 'Stylized Rendering', description: 'Shaders for cartoon and stylized looks' },
-                    { title: 'Post Processing Effects', description: 'Advanced post-processing shader collection' }
+                    { title: 'Zero Allocation (Hot Path)', description: 'Event dispatch, ticking, lock checks, and service resolution allocate 0 bytes during steady-state runtime.' },
+                    { title: 'Boxing-Free EventBus', description: 'Constrained with where T : struct, IEvent and generic end to end; value-type events dispatch without boxing.' },
+                    { title: 'Service Locator', description: 'Tag-based registry keyed by type plus optional tag, with allocation-free O(1) resolution.' },
+                    { title: 'Unified Tick Loop', description: 'One deterministic loop sorted by TickPriority replaces dozens of MonoBehaviour.Update calls.' },
+                    { title: 'Reference-Counted Locking', description: 'ServiceLocker gates systems by distinct reason without conflicts (cutscene / loading).' },
+                    { title: 'Dependency-Free Design', description: 'Pure C# against the Unity API; nothing to resolve, version, or conflict with.' }
                 ],
                 requirements: [
-                    { name: 'Unity Version', value: '2022.1 or higher' },
-                    { name: 'Render Pipeline', value: 'URP/HDRP support' },
-                    { name: 'GPU', value: 'DirectX 11/OpenGL 4.0+' },
-                    { name: 'Shader Model', value: 'SM 4.0+' }
+                    { name: 'Unity Version', value: '2021.3 LTS or higher' },
+                    { name: 'Installation', value: 'Unity Package Manager (Git URL)' },
+                    { name: 'Memory Profile', value: 'Steady-state 0 B allocation' },
+                    { name: 'Dependencies', value: 'None (Pure C#)' }
                 ],
                 changelog: [
-                    { version: 'v1.8.2', changes: 'URP 14 support, new hologram shader added' },
-                    { version: 'v1.8.0', changes: 'Expanded HDRP support, performance improvements' },
-                    { version: 'v1.7.5', changes: 'New toon shader variants, bug fixes' }
+                    { version: 'v1.0.0', changes: 'Initial release: EventBus, ServiceProvider, TickService, and ServiceLocker modules.' }
                 ],
-                downloadCount: '856',
-                rating: '4.9',
-                lastUpdate: '5 days',
-                tags: ['Shaders', 'VFX', 'Rendering', 'Materials', 'Graphics']
-            },
-            'audio-manager': {
-                title: 'Audio Manager',
-                icon: 'fas fa-music',
-                category: 'Audio System',
-                version: 'v3.0.1',
-                size: '23 MB',
-                license: 'GPL v3',
-                description: 'A comprehensive solution for game audio. Music management, sound effect control, and dynamic audio mixing. A professional sound experience with 3D audio support and real-time audio processing.',
-                features: [
-                    { title: '3D Audio System', description: 'Spatial audio and binaural sound support' },
-                    { title: 'Dynamic Music', description: 'Dynamic music transitions based on game state' },
-                    { title: 'Audio Pool Manager', description: 'Performant sound file management' },
-                    { title: 'Real-time Effects', description: 'Real-time reverb, echo, and filter effects' }
-                ],
-                requirements: [
-                    { name: 'Unity Version', value: '2020.3 LTS or higher' },
-                    { name: 'Audio System', value: 'Unity Audio 5.6+' },
-                    { name: 'Platform', value: 'Windows, Mac, Linux, Mobile' },
-                    { name: 'Codec Support', value: 'OGG, WAV, MP3' }
-                ],
-                changelog: [
-                    { version: 'v3.0.1', changes: 'WebGL audio improvements, mobile optimization' },
-                    { version: 'v3.0.0', changes: 'New 3D audio system, UI redesign' },
-                    { version: 'v2.9.8', changes: 'Performance optimizations, memory leak fixes' }
-                ],
-                downloadCount: '643',
-                rating: '4.7',
-                lastUpdate: '1 week',
-                tags: ['Audio', 'Music', 'SFX', '3D Sound', 'Manager']
+                tags: ['Unity', 'Event Bus', 'Service Locator', 'Zero-Allocation', 'C#', 'Performance']
             }
         };
 
@@ -2331,11 +2218,16 @@
                 changelogContainer.appendChild(changeDiv);
             });
             
-            // Stats
-            document.getElementById('downloadCount').textContent = package.downloadCount;
-            document.getElementById('ratingCount').textContent = package.rating;
-            document.getElementById('lastUpdate').textContent = package.lastUpdate;
-            
+            // Source / repo button
+            const sourceBtn = document.getElementById('sourceBtn');
+            if (package.repo) {
+                sourceBtn.style.display = '';
+                sourceBtn.onclick = () => window.open(package.repo, '_blank', 'noopener');
+            } else {
+                sourceBtn.style.display = 'none';
+                sourceBtn.onclick = null;
+            }
+
             // Tags
             const tagsContainer = document.getElementById('packageTags');
             tagsContainer.innerHTML = '';
