@@ -706,6 +706,53 @@
             text-shadow: 0 0 10px rgba(255,140,0,0.5);
         }
 
+        .card-icon.card-thumb {
+            position: relative;
+            width: 124px;
+            aspect-ratio: 9 / 16;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,140,0,0.35);
+            cursor: pointer;
+            text-shadow: none;
+        }
+
+        .card-icon.card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .card-icon.card-thumb:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-icon.card-thumb .thumb-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #fff;
+            background: rgba(255, 140, 0, 0.85);
+            border-radius: 50%;
+            box-shadow: 0 0 18px rgba(255, 140, 0, 0.6);
+            pointer-events: none;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card-icon.card-thumb:hover .thumb-play {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(255, 140, 0, 1);
+        }
+
         .card-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -1393,8 +1440,9 @@
 
             <div class="projects-grid">
                 <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon">
-                        <i class="fas fa-border-all"></i>
+                    <div class="card-icon card-thumb" onclick="openProjectDetail('match-2')">
+                        <img src="https://i.ytimg.com/vi/QVxsW7guX5M/oardefault.jpg" alt="Match-2" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/QVxsW7guX5M/hqdefault.jpg';">
+                        <span class="thumb-play"><i class="fas fa-play"></i></span>
                     </div>
                     <h3 class="card-title" data-i18n="proj1_title">Match-2</h3>
                     <p class="card-description" data-i18n="proj1_desc">
