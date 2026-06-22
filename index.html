@@ -1367,6 +1367,69 @@
             50% { box-shadow: 0 0 20px rgba(255,140,0,0.75); }
         }
 
+        .store-coming-btn {
+            background: transparent;
+            color: rgba(255,140,0,0.5);
+            border-color: rgba(255,140,0,0.3);
+            cursor: default;
+            pointer-events: none;
+            font-size: 0.95rem;
+        }
+
+        .modal-side-links {
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .technical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem 0;
+        }
+
+        .technical-list > li {
+            padding-left: 1.1rem;
+            position: relative;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 0.1rem;
+        }
+
+        .technical-list > li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #ff8c00;
+            font-size: 0.6rem;
+            top: 0.38rem;
+        }
+
+        .technical-sublist {
+            list-style: none;
+            padding: 0;
+            margin: 0.15rem 0 0.25rem 0.8rem;
+        }
+
+        .technical-sublist > li {
+            padding-left: 1rem;
+            position: relative;
+            color: #aaa;
+            font-size: 0.88rem;
+            line-height: 1.45;
+            margin-bottom: 0.05rem;
+        }
+
+        .technical-sublist > li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: #ff8c00;
+            font-size: 1rem;
+            top: -0.05rem;
+            line-height: 1.45;
+        }
+
     </style>
 </head>
 <body>
@@ -1453,9 +1516,9 @@
                     </div>
                     <h3 class="card-title" data-i18n="proj2_title">Liquid Sort</h3>
                     <p class="card-description" data-i18n="proj2_desc">
-                        Şu anda geliştirme aşamasında olan yeni bir bulmaca oyunu mekaniği ve mimari framework'ü. Takipte kalın!
+                        Custom bir DI + event-driven altyapı, URP sıvı shader'ı ve kendi level editor'ü üzerine kurulu sıvı-sıralama bulmaca oyunu. Bir oyun olduğu kadar bir mimari vitrini.
                     </p>
-                    <a href="privacy.html" class="card-link"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="card-link" onclick="openProjectDetail('liquid-sort'); return false;"><span data-i18n="btn_details">Detayları Görüntüle</span> <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="project-card coming-soon" data-aos="fade-up" data-aos-delay="300">
@@ -1566,6 +1629,17 @@
                                 <span id="modalPlatform"></span>
                             </div>
                         </div>
+                        <div id="modalProjectLinks" class="modal-side-links" style="display:none;">
+                            <span id="modalIosBtn" class="action-btn store-coming-btn">
+                                <i class="fab fa-apple"></i> <span id="modalIosText">iOS</span>
+                            </span>
+                            <span id="modalAndroidBtn" class="action-btn store-coming-btn">
+                                <i class="fab fa-google-play"></i> <span id="modalAndroidText">Android</span>
+                            </span>
+                            <a href="#" id="modalPrivacyLink" class="action-btn code-btn" target="_blank" rel="noopener">
+                                <i class="fas fa-shield-alt"></i> Privacy
+                            </a>
+                        </div>
                     </div>
                     <div class="project-info-section">
                         <h3 data-i18n="modal_about">Proje Hakkında</h3>
@@ -1575,8 +1649,8 @@
                         <ul id="modalFeatures"></ul>
 
                         <h3 data-i18n="modal_technical">Teknik Detaylar</h3>
-                        <p id="modalTechnical"></p>
-                        
+                        <div id="modalTechnical"></div>
+
                         <div class="project-actions">
                             <a href="#" id="modalCodeLink" class="action-btn code-btn" target="_blank" rel="noopener">
                                 <i class="fab fa-github"></i> <span data-i18n="btn_code">Kodu İncele</span>
@@ -1685,7 +1759,7 @@
                 proj1_title: "Match-2",
                 proj1_desc: "Unity ile geliştirilmiş, performans odaklı bir Match-2 bulmaca oyunu framework'ü. Bu proje; servis tabanlı mimariyi, özel havuzlama (pooling) yoluyla verimli bellek yönetimini ve güçlü oynanış algoritmalarını sergilemektedir.",
                 proj2_title: "Liquid Sort",
-                proj2_desc: "Şu anda geliştirme aşamasında olan yeni bir bulmaca oyunu mekaniği ve mimari framework'ü. Takipte kalın!",
+                proj2_desc: "Custom bir DI + event-driven altyapı, URP sıvı shader'ı ve kendi level editor'ü üzerine kurulu sıvı-sıralama bulmaca oyunu. Bir oyun olduğu kadar bir mimari vitrini.",
                 proj3_title: "Proje #3",
                 proj3_desc: "Yeni proje yolda. Detaylar yakında paylaşılacaktır.",
                 status_soon: "Çok Yakında",
@@ -1729,7 +1803,7 @@
                 proj1_title: "Match-2",
                 proj1_desc: "A performance-oriented Match-2 puzzle game framework built in Unity. This project demonstrates a service-based architecture, efficient memory management via custom pooling, and robust gameplay algorithms.",
                 proj2_title: "Liquid Sort",
-                proj2_desc: "A new puzzle game mechanic and architecture framework currently under development. Stay tuned!",
+                proj2_desc: "A liquid-sorting puzzle built on a custom DI + event-driven foundation, a URP liquid shader, and an in-house level editor. As much an architecture showcase as a game.",
                 proj3_title: "Project #3",
                 proj3_desc: "Next project is brewing. Details will be disclosed soon.",
                 status_soon: "Coming Soon",
@@ -1999,9 +2073,60 @@
                     'Veri Odaklı Tasarım: Seviye yapılandırmaları ve öğe özellikleri ScriptableObjects (LevelData, ItemUIData) üzerinden yönetilir.',
                     'Girdi Soyutlaması: Tek bir IInput arayüzü üzerinden hem Fare hem de Dokunmatik girdileri destekler.'
                 ],
-                technical: 'Tech Stack: Unity 2021.3+ | C# | MVC / Service Locator',
+                technical: [
+                    { label: 'Unity 2021.3+' },
+                    { label: 'C#' },
+                    { label: 'Mimari', sub: ['MVC', 'Service Locator'] }
+                ],
                 video: 'QVxsW7guX5M',
                 codeLink: '#'
+            },
+            'liquid-sort': {
+                title: 'Liquid Sort',
+                icon: 'fas fa-flask',
+                date: 'Unity 6 (6000.3.12f1)',
+                tech: 'C# | DOTween',
+                platform: 'iOS / Mobil',
+                description: "LiquidSort, klasik sıvı-sıralama türünde bir mobil bulmaca oyunudur: oyuncu, şişeler arasında sıvı katmanlarını dökerek her şişeyi tek renge ayırmaya çalışır. Normal, Locked, Encased ve Curtain şişe tipleri ile gizli (hidden) katmanlar bulmacaya derinlik katar. Bu proje yalnızca bir oyun değil; temiz mimari ve ölçeklenebilir bir framework'ün somut göstergesidir. Saf C# servis katmanı, MonoBehaviour view'larından kesin biçimde ayrılmış; bu çekirdek, kişisel altyapı paketlerim CoreKit ve MInject'in temelini oluşturur. Proje gerçek iOS cihazlarında (iPhone 11 dahil) test edildi; sıvı shader'ı, Apple A13 GPU'sundaki bir page-fault'u çözmek için yeniden yazıldı.",
+                features: [
+                    "Sıvı-sıralama mekaniği: Eşleşen üst-renk + yeterli boşluk kuralıyla katman dökme; çok-katmanlı şişeler ve tam-eşleşme (complete) tespiti.",
+                    "Dört farklı şişe tipi: Normal (kaynak/hedef), Locked (taş tabanlı, tamamlanınca ekstra efekt), Encased (taş kabuk — yatay komşusu tamamlanınca Normal'e döner), Curtain (perde rengi tahtada tamamlandığında kalkar).",
+                    "Gizli (hidden) katmanlar: Shader tabanlı; kapalıyken gri görünen katman, reveal animasyonuyla gerçek rengine döner.",
+                    "Booster sistemi (Command pattern): Geri Al (Undo), Karıştır (Shuffle — dim overlay ile hedef şişe seç modu) ve Şişe Ekle (Add Bottle).",
+                    "Custom URP sıvı shader'ı: Perspektif elips yüzey kapağı, yerçekimi projeksiyonlu sabit sıvı seviyesi, C#'tan sürülen slosh animasyonu ve katman-başı gizli renk tint'i.",
+                    "Eşzamanlı dökme (concurrent pours): Bir şişe dolarken aynı hedefe ikinci dökme başlatılabilir; akışlar bağımsız ilerler.",
+                    "Win / Lose / Deadlock tespiti: Tick tabanlı bitiş-koşulu servisi; kazanma popup'ı tüm animasyonlar bitene kadar bekler.",
+                    "Responsive kamera & safe-area: Şişe sayısına göre otomatik sığdıran kamera; çentikli ekran desteği.",
+                    "Custom Unity Level Editor: Grid üzerine şişe yerleştirme, gerçek oyun paletiyle doldurma, snapshot undo ve JSON kaydetme.",
+                    "AES-256 şifreli yerel kayıt: Kurcalamaya karşı şifreli oyuncu verisi.",
+                    "Additive sahne akışı: Kalıcı BootstrapScene + additive yükleme + siyah geçiş örtüsü."
+                ],
+                technical: [
+                    { label: 'Unity 6 (6000.3.12f1)' },
+
+                    { label: 'C#' },
+                    { label: 'DOTween' },
+                    { label: 'Unity Input System' },
+                    { label: 'Mimari', sub: [
+                        'ServiceProvider (service locator)',
+                        'Struct tabanlı EventBus',
+                        'TickService + ITickableService',
+                        'ServiceLocker (reason-based locking)',
+                        'Persistent BootstrapScene + additive sahne yükleme'
+                    ]},
+                    { label: 'Öne Çıkan', sub: [
+                        "Sıvı shader'ı Apple A13 GPU'sunda page-fault'u çözmek için sabit boyutlu dizi + unroll'lu döngülerle yeniden yazıldı",
+                        "Input, UI EventSystem'den bağımsız ScreenTapSignal → BottleTappedSignal zinciriyle işlenir",
+                        'Reason-based locking ile bağımsız sistemler aynı kaynağı çakışmadan kilitleyebilir'
+                    ]},
+                    { label: 'Platform: iOS / Mobil (iPhone 11 dahil gerçek cihazda test edildi)' }
+                ],
+                video: '15apQwjeKdo',
+                privacyLink: 'privacy.html',
+                showStoreLinks: true,
+                iosLink: null,
+                androidLink: null,
+                codeLink: null
             }
         };
 
@@ -2021,9 +2146,60 @@
                     'Data-Driven Design: Level configurations and item properties are managed via ScriptableObjects (LevelData, ItemUIData).',
                     'Input Abstraction: Supports both Mouse and Touch inputs through a unified IInput interface.'
                 ],
-                technical: 'Tech Stack: Unity 2021.3+ | C# | MVC / Service Locator',
+                technical: [
+                    { label: 'Unity 2021.3+' },
+                    { label: 'C#' },
+                    { label: 'Architecture', sub: ['MVC', 'Service Locator'] }
+                ],
                 video: 'QVxsW7guX5M',
                 codeLink: '#'
+            },
+            'liquid-sort': {
+                title: 'Liquid Sort',
+                icon: 'fas fa-flask',
+                date: 'Unity 6 (6000.3.12f1)',
+                tech: 'C# | DOTween',
+                platform: 'iOS / Mobile',
+                description: "LiquidSort is a mobile puzzle game in the classic liquid-sorting genre: the player pours liquid layers between bottles to sort each one down to a single color. Bottle types (Normal, Locked, Encased, Curtain) and hidden layers add depth to the puzzle. This project is not just a game — it is a concrete demonstration of clean architecture and a scalable game framework. A pure C# service layer is cleanly separated from MonoBehaviour views; this core forms the basis of my personal infrastructure packages, CoreKit and MInject. The project was tested on real iOS hardware (including an iPhone 11) — the liquid shader was rewritten to fix a GPU page-fault on Apple's A13.",
+                features: [
+                    "Liquid-sorting mechanic: Layer pouring governed by a matching-top-color + sufficient-space rule, with multi-layer bottles and full-match (complete) detection.",
+                    "Four bottle types: Normal (source/target), Locked (stone base, extra effect on completion), Encased (rock shell that cracks into Normal when a horizontal neighbor completes), Curtain (its curtain lifts when its target color is completed anywhere on the board).",
+                    "Hidden layers: Shader-based; a layer shown as grey while concealed is revealed in its true color through a reveal animation.",
+                    "Booster system (Command pattern): Undo, Shuffle (with a dim-overlay target-picking mode), and Add Bottle.",
+                    "Custom URP liquid shader: A perspective elliptical surface cap, a liquid level kept stable via gravity projection while the bottle tilts, a damped-sine slosh driven from C#, and per-layer hidden-color tinting.",
+                    "Concurrent pours: A second pour into the same target can start while one is still filling; the streams advance independently.",
+                    "Win / Lose / Deadlock detection: A tick-based end-condition service; the win popup waits until every completion animation has finished.",
+                    "Responsive camera & safe area: Auto-fitting camera based on bottle count, plus safe-area layout for notched screens.",
+                    "Custom Unity Level Editor: Grid-based bottle placement, filling with the real game palette, snapshot-based undo, and saving to a JSON schema.",
+                    "AES-256 encrypted local save: Tamper-resistant local storage for player data.",
+                    "Additive scene flow: Persistent BootstrapScene with Menu/Game scenes loaded additively, smoothed by a black transition cover."
+                ],
+                technical: [
+                    { label: 'Unity 6 (6000.3.12f1)' },
+
+                    { label: 'C#' },
+                    { label: 'DOTween' },
+                    { label: 'Unity Input System' },
+                    { label: 'Architecture', sub: [
+                        'ServiceProvider (service locator)',
+                        'Struct-based EventBus',
+                        'TickService + ITickableService',
+                        'ServiceLocker (reason-based locking)',
+                        'Persistent BootstrapScene + additive scene loading'
+                    ]},
+                    { label: 'Notable Engineering', sub: [
+                        "Liquid shader rewritten with fixed-size arrays and unrolled loops to resolve a page-fault on Apple's A13 GPU",
+                        'Input handled via ScreenTapSignal → BottleTappedSignal chain independent of the UI EventSystem',
+                        'Reason-based locking lets independent systems (pour, undo, shuffle) lock the same resource without conflict'
+                    ]},
+                    { label: 'Platform: iOS / Mobile (tested on real hardware — including iPhone 11)' }
+                ],
+                video: '15apQwjeKdo',
+                privacyLink: 'privacy.html',
+                showStoreLinks: true,
+                iosLink: null,
+                androidLink: null,
+                codeLink: null
             }
         };
 
@@ -2046,7 +2222,30 @@
             document.getElementById('modalTech').textContent = project.tech;
             document.getElementById('modalPlatform').textContent = project.platform;
             document.getElementById('modalDescription').textContent = project.description;
-            document.getElementById('modalTechnical').textContent = project.technical;
+            const technicalEl = document.getElementById('modalTechnical');
+            technicalEl.innerHTML = '';
+            if (Array.isArray(project.technical)) {
+                const tUl = document.createElement('ul');
+                tUl.className = 'technical-list';
+                project.technical.forEach(function(item) {
+                    const tLi = document.createElement('li');
+                    tLi.textContent = item.label;
+                    if (item.sub && item.sub.length) {
+                        const sUl = document.createElement('ul');
+                        sUl.className = 'technical-sublist';
+                        item.sub.forEach(function(s) {
+                            const sLi = document.createElement('li');
+                            sLi.textContent = s;
+                            sUl.appendChild(sLi);
+                        });
+                        tLi.appendChild(sUl);
+                    }
+                    tUl.appendChild(tLi);
+                });
+                technicalEl.appendChild(tUl);
+            } else {
+                technicalEl.textContent = project.technical;
+            }
             
             // Features listesi
             const featuresList = document.getElementById('modalFeatures');
@@ -2065,7 +2264,23 @@
             } else {
                 codeBtn.style.display = 'none';
             }
-            
+
+            // Sol panel: privacy + store links
+            const projectLinks = document.getElementById('modalProjectLinks');
+            const privacyBtn = document.getElementById('modalPrivacyLink');
+            const comingSoon = currentLang === 'en' ? 'Coming Soon' : 'Çok Yakında';
+            document.getElementById('modalIosText').textContent = 'iOS — ' + comingSoon;
+            document.getElementById('modalAndroidText').textContent = 'Android — ' + comingSoon;
+            if (project.privacyLink || project.showStoreLinks) {
+                projectLinks.style.display = 'flex';
+                privacyBtn.style.display = project.privacyLink ? '' : 'none';
+                if (project.privacyLink) privacyBtn.href = project.privacyLink;
+                document.getElementById('modalIosBtn').style.display = project.showStoreLinks ? '' : 'none';
+                document.getElementById('modalAndroidBtn').style.display = project.showStoreLinks ? '' : 'none';
+            } else {
+                projectLinks.style.display = 'none';
+            }
+
             // Modal'ı göster
             document.getElementById('projectDetailModal').style.display = 'block';
             document.body.style.overflow = 'hidden'; // Arka plan scroll'u engelle
