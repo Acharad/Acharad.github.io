@@ -633,7 +633,12 @@
         .section {
             padding: 100px 0;
             position: relative;
-            background: rgba(0,0,0,0.8);
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.8) 7%,
+                rgba(0,0,0,0.8) 93%,
+                rgba(0,0,0,0) 100%
+            );
         }
 
         .container {
@@ -862,7 +867,11 @@
         }
 
         .contact-section {
-            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(0,0,0,0.9));
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,0) 0%,
+                rgba(255,140,0,0.06) 8%,
+                rgba(0,0,0,0.88) 100%
+            );
             padding: 100px 0;
             text-align: center;
         }
@@ -1566,9 +1575,9 @@
                     <div class="card-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <h3 class="card-title" data-i18n="pkg3_title">Paket #3</h3>
+                    <h3 class="card-title" data-i18n="pkg3_title">HapticBridge</h3>
                     <p class="card-description" data-i18n="pkg3_desc">
-                        Yeni bir paket geliştirme aşamasında. Detaylar yakında paylaşılacaktır.
+                        Yeni bir titreşim paketi geliştirme aşamasında.
                     </p>
                 </div>
             </div>
@@ -1778,8 +1787,8 @@
                 pkg1_desc: "Unity için minimalist ve hafif bir Dependency Injection framework'ü. Attribute tabanlı injection ve ayrıştırılmış bir Signal Bus ile temiz mimari.",
                 pkg2_title: "CoreKit",
                 pkg2_desc: "Unity için bağımlılıksız bir çekirdek altyapı kütüphanesi: event bus, service locator, birleşik tick döngüsü ve sıfır-allocation odaklı kilitleme.",
-                pkg3_title: "Paket #3",
-                pkg3_desc: "Yeni bir paket geliştirme aşamasında. Detaylar yakında paylaşılacaktır.",
+                pkg3_title: "HapticBridge",
+                pkg3_desc: "Yeni bir titreşim paketi geliştirme aşamasında.",
                 btn_details: "Detayları Görüntüle",
                 contact_title: "İletişim",
                 contact_email: "E-posta",
@@ -1822,8 +1831,8 @@
                 pkg1_desc: "A minimalist, lightweight Dependency Injection framework for Unity. Clean architecture through attribute-based injection and a decoupled Signal Bus.",
                 pkg2_title: "CoreKit",
                 pkg2_desc: "A dependency-free core infrastructure library for Unity: an event bus, service locator, unified tick loop, and zero-allocation-focused locking.",
-                pkg3_title: "Package #3",
-                pkg3_desc: "A new package is in development. Details will be disclosed soon.",
+                pkg3_title: "HapticBridge",
+                pkg3_desc: "A new haptic feedback package currently in development.",
                 btn_details: "View Details",
                 contact_title: "Contact",
                 contact_email: "Email",
